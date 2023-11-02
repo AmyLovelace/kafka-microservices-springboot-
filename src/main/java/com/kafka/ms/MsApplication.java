@@ -16,7 +16,9 @@ public class MsApplication {
 	@Bean
 	CommandLineRunner runner (KafkaTemplate<String,String> kafkaTemplate) {
 		return args -> {
-		kafkaTemplate.send("amy","HI BITCHES!");
+			for (int i = 0; i < 10_000; i++) {
+				kafkaTemplate.send("amy","HI BITCHES!" + i);
+			}
 		};
 	}
 
